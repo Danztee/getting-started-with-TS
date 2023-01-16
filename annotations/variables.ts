@@ -28,3 +28,30 @@ let point: { x: number; y: string; z: number } = {
 const logNumber: (i: number) => void = (i: number) => {
   console.log(i);
 };
+
+// when to use annotations
+// 1) functions that returns any type
+const json = "{ 'x': 10, 'y': 10 }";
+const coordinates: { x: number; y: number } = JSON.parse(json);
+// coordinates.okay;
+
+// 2) when we declare a variable on one line and init. it later
+let words = ["red", "blue", "green"];
+let foundWord: boolean;
+
+words.forEach((word) => {
+  if (word === "green") {
+    foundWord = true;
+  }
+});
+
+// 3) variables whose type cannot be inferred correctly
+let numbers = [-10, -1, 12];
+let numbersAboveZero: number | boolean = false;
+
+numbers.forEach((number) => {
+  console.log(number);
+  if (number > 0) {
+    numbersAboveZero = number;
+  }
+});
